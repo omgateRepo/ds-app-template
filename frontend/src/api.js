@@ -1,4 +1,6 @@
-export const API_BASE = import.meta.env.VITE_API_BASE_URL || ''
+// Blueprint uses ds-app-template-api; same URL here so no env var needed
+const DEFAULT_API_URL = 'https://ds-app-template-api.onrender.com'
+export const API_BASE = import.meta.env.VITE_API_BASE_URL || DEFAULT_API_URL
 
 const baseUrl = (API_BASE || '').replace(/\/$/, '')
 const AUTH_STORAGE_KEY = 'app-basic-auth'
