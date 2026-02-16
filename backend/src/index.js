@@ -8,7 +8,7 @@ import routes from './routes.js'
 import createAuthMiddleware from './middleware/auth.js'
 
 const app = express()
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8080 // Render
 const mode = process.env.SKIP_DB === 'true' ? 'stub' : 'db'
 const isProduction = process.env.NODE_ENV === 'production'
 const jsonBodyLimit = process.env.JSON_BODY_LIMIT || '1mb'
