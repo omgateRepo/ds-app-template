@@ -64,7 +64,7 @@ On push/PR to `main`:
 
 ## Deploy on Render
 
-Push to GitHub, then: **New + → Blueprint** → connect repo → **Apply**. The Blueprint creates the database, API, and frontend. Set **CORS_ORIGIN** on the API to your frontend URL once. See [RENDER_CREATE.md](RENDER_CREATE.md).
+Push to GitHub, then: **New + → Blueprint** → connect repo → **Apply**. The Blueprint creates the database, API, and frontend. No env vars to set. See [RENDER_CREATE.md](RENDER_CREATE.md).
 
 ## Git workflow
 

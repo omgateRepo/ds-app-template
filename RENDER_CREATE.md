@@ -1,6 +1,6 @@
 # Deploy this template on Render
 
-**Goal:** One Blueprint creates API + frontend + DB. You only set one env var after.
+**Goal:** One Blueprint creates API + frontend + DB. No env vars to set (API allows all origins by default).
 
 ---
 
@@ -24,12 +24,4 @@ git push -u origin main
    Render creates **ds-app-template-db**, **ds-app-template-api**, and **ds-app-template-frontend** from `render.yaml` (database is defined first so the API’s `fromDatabase` link works). The API can appear a few seconds after the DB.
 4. Wait until API and frontend show **Live** (first build may take several minutes). If the API build failed before: the Blueprint now builds from repo root so the shared `packages/types` is available; push the latest commit and redeploy.
 
----
-
-## 3. Set CORS (one time)
-
-1. Open **ds-app-template-api** → **Environment**.
-2. Set **CORS_ORIGIN** = your frontend URL (e.g. `https://ds-app-template-frontend.onrender.com`), no trailing slash.
-3. Save (API redeploys).
-
-Done. Open the frontend URL. For future apps: clone this template repo, rename in `package.json` / `render.yaml` if you want, then same flow: push → Blueprint → set CORS_ORIGIN.
+Done. Open the frontend URL. For future apps: clone this template repo, rename in `package.json` / `render.yaml` if you want, then same flow: push → Blueprint.
