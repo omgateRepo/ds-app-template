@@ -32,6 +32,9 @@ services:
     runtime: static
     buildCommand: npm install && cd frontend && npm run build
     staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://ds-app-template-api.onrender.com
     headers:
       - path: /*
         name: Cache-Control
