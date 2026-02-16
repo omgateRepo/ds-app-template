@@ -1,0 +1,11 @@
+{
+  "name": "ds-app-template",
+  "private": true,
+  "workspaces": ["frontend", "backend", "packages/types"],
+  "scripts": {
+    "postinstall": "npm --workspace frontend run postinstall",
+    "lint": "npm run lint --workspace frontend && npm run lint --workspace backend",
+    "typecheck": "npm run typecheck --workspace frontend && npm run typecheck --workspace backend",
+    "test": "npm run test --workspace frontend && npm run test --workspace backend"
+  }
+}
