@@ -68,6 +68,8 @@ On push/PR to `main`:
 
 **Blueprint is the source of truth:** all Render config lives in `render.yaml`; no manual build/start overrides in the dashboard. Push to GitHub, then: **New + → Blueprint** → connect repo → **Apply**. The Blueprint creates the database, API, and frontend. No env vars to set. See [RENDER_CREATE.md](RENDER_CREATE.md).
 
+**Auto-deploy on push:** To have every push to `main` trigger a Render deploy, add a repo secret: in Render open the **ds-app-template-api** service → **Settings** → **Deploy Hook**, copy the URL; in GitHub go to **Settings** → **Secrets and variables** → **Actions** and add `RENDER_DEPLOY_HOOK_URL` with that URL. CI will call it after a successful build on push to `main`.
+
 ## Git workflow
 
 - Use **main** as the default branch.
