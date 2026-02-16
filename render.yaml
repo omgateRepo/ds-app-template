@@ -14,6 +14,7 @@ services:
     plan: free
     region: oregon
     buildCommand: npm run build:api
+    preDeployCommand: npm run migrate:api
     startCommand: npm run start:api
     envVars:
       - key: NODE_ENV
