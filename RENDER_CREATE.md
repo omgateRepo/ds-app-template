@@ -22,17 +22,15 @@ git push -u origin main
 2. Connect the repo you pushed.
 3. **Apply.**  
    Render creates **ds-app-template-db**, **ds-app-template-api**, and **ds-app-template-frontend** from `render.yaml` (database is defined first so the API’s `fromDatabase` link works). The API can appear a few seconds after the DB.
-4. Leave **Auto Sync** on (default): each push to the linked branch that changes `render.yaml` updates the services and triggers a deploy. No manual sync.
+4. Leave **Auto Sync** on (default): each push to the linked branch that changes `render.yaml` updates the services and triggers a deploy.
 5. Wait until API and frontend show **Live** (first build may take several minutes).
 
-**If the API build fails** with “datasource.url is required”: Render is using an old build command and sometimes an old commit. Do this **once**:
+**If the API build fails** with “datasource.url is required”: the API was likely created from an older Blueprint and Render kept that service’s build/start commands. To fix it **using only the Blueprint** (no manual command editing):
 
-1. **Render dashboard** → **ds-app-template-api** → **Settings** (or **Build & Deploy**).
-2. Set **Build Command** to: `npm run build:api`
-3. Set **Start Command** to: `npm run start:api`
-4. **Save**.
-5. **Manual Deploy** → **“Clear build cache & deploy”** (or **Deploy latest commit**) so it uses the **latest** commit on main, not an old one.
+1. **Render dashboard** → **ds-app-template-api** (the web service) → **Settings** → scroll to bottom → **Delete Web Service**. Confirm.
+2. Open the **Blueprint** that owns this repo → **Sync** (or push a small change to `render.yaml` so Auto Sync runs).
+3. Render will **recreate** **ds-app-template-api** from the current `render.yaml`, with the correct `buildCommand` and `startCommand`. The new service’s first deploy will use the latest commit and the Blueprint config.
 
-The repo defines `build:api` (install + prisma generate only) and `start:api` (migrate + start) in the root `package.json`, so no manual command strings. After this one-time fix, future pushes will deploy with the correct commands.
+Everything stays in the Blueprint: `render.yaml` uses `npm run build:api` / `npm run start:api`, and the root `package.json` defines those scripts (build = install + prisma generate only; start = migrate + node). No dashboard overrides.
 
 Done. Open the frontend URL. For future apps: clone this template repo, rename in `package.json` / `render.yaml` if you want, then same flow: push → Blueprint.
