@@ -62,21 +62,9 @@ On push/PR to `main`:
 - `npx prisma migrate diff` in `backend` (migrations vs schema)
 - `npm run test`
 
-## Deploy to Render
+## Deploy on Render
 
-1. Create a **PostgreSQL** database in the Render dashboard and copy its **Internal Database URL** (or External if you prefer).
-
-2. In the dashboard: **New → Blueprint**, connect the repo, and add the `render.yaml` from this repo (or create services manually using the same build/start commands and env vars).
-
-3. Set environment variables on the **API** service:
-   - `DATABASE_URL` – Postgres connection string
-   - `CORS_ORIGIN` – your frontend URL (e.g. `https://your-app-frontend.onrender.com`)
-   - Optionally `RENDER_AUTH_USER` / `RENDER_AUTH_PASSWORD` for Basic Auth
-
-4. Set on the **frontend** service (if using a separate API URL):
-   - `VITE_API_BASE_URL` – your API URL (e.g. `https://your-app-api.onrender.com`) – set at **build** time.
-
-5. Deploy; the API runs migrations on each deploy via `prisma migrate deploy`.
+Push to GitHub, then: **New + → Blueprint** → connect repo → **Apply**. The Blueprint creates the database, API, and frontend. Set **CORS_ORIGIN** on the API to your frontend URL once. See [RENDER_CREATE.md](RENDER_CREATE.md).
 
 ## Git workflow
 
