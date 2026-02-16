@@ -1,0 +1,10 @@
+---
+description: Work only on this template project; never touch ds-proforma or ds-proforma-api
+alwaysApply: true
+---
+
+# Project scope
+
+- **Only work in this project** (the template: ds-proforma-template / ds-app-template). All edits, commits, and pushes must be in this repo and directory.
+- **Do not modify, commit, or push** to ds-proforma or ds-proforma-api (the production app). Do not open, edit, or run git commands in the ds-proforma repo.
+- Before making changes or running git, confirm you are in the template project path, not ds-proforma-fresh or DS-proforma.

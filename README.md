@@ -78,6 +78,10 @@ On push/PR to `main`:
 
 ## Adding your first feature
 
-- **Backend:** Add routes in `backend/src/routes.js`, models in `backend/prisma/schema.prisma`, then `npx prisma migrate dev --name your_change` in `backend/`.
+- **Backend:** Add routes in `backend/src/routes.js`, models in `backend/prisma/schema.prisma`, then `npx prisma migrate dev --name your_change` in `backend/`. (Prisma 7: DB URL lives in `backend/prisma.config.ts`.)
 - **Shared types:** Add types or Zod schemas in `packages/types/src/` and re-export from `index.js` / `index.d.ts`.
 - **Frontend:** Add components in `frontend/src/`, call the API via `frontend/src/api.js` (or extend it with typed helpers).
+
+## Maintenance
+
+- **npm audit:** Run `npm audit` and `npm audit fix` (without `--force`) to address non-breaking vulnerabilities.

@@ -31,7 +31,7 @@ git push -u origin main
 2. Open the **Blueprint** that owns this repo → **Sync** (or push a small change to `render.yaml` so Auto Sync runs).
 3. Render will **recreate** **ds-app-template-api** from the current `render.yaml`, with the correct `buildCommand` and `startCommand`. The new service’s first deploy will use the latest commit and the Blueprint config.
 
-Everything stays in the Blueprint: `render.yaml` uses `npm run build:api` / `npm run start:api`, and the root `package.json` defines those scripts (build = install + prisma generate only; start = migrate + node). No dashboard overrides.
+Everything stays in the Blueprint: `render.yaml` uses `npm run build:api` / `npm run start:api`, and the root `package.json` defines those scripts (build = install + prisma generate; start = migrate + seed + node). The API uses Prisma 7: the DB URL is in `backend/prisma.config.ts`, not in the schema. No dashboard overrides.
 
 **If you fork and rename the API service:** set **VITE_API_BASE_URL** on the frontend in the Blueprint to your API URL so the frontend calls the right host.
 
