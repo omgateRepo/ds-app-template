@@ -41,7 +41,7 @@ Monorepo template with **Frontend** (React + Vite + TypeScript), **Backend** (Ex
    ```
    Frontend runs on port 5173.
 
-4. **Auth:** The API uses HTTP Basic Auth. Set `RENDER_AUTH_USER` and `RENDER_AUTH_PASSWORD` (or `BASIC_AUTH_*`) in the backend env, or create a user in the DB and send `Authorization: Basic <base64(email:password)>`. The frontend can store credentials via `setAuthCredentials({ username, password })` and then call `fetchCurrentUser()`.
+4. **Auth:** The API uses HTTP Basic Auth. A default user **admin** / **Password1** is created on deploy (change after first login). Or set `RENDER_AUTH_USER` / `RENDER_AUTH_PASSWORD` in the backend env. The frontend can store credentials via `setAuthCredentials({ username, password })` and then call `fetchCurrentUser()`.
 
 ## Scripts (from repo root)
 
