@@ -22,6 +22,17 @@ git push -u origin main
 2. Connect the repo you pushed.
 3. **Apply.**  
    Render creates **ds-app-template-db**, **ds-app-template-api**, and **ds-app-template-frontend** from `render.yaml` (database is defined first so the API’s `fromDatabase` link works). The API can appear a few seconds after the DB.
-4. Wait until API and frontend show **Live** (first build may take several minutes). If the API build failed before: the Blueprint now builds from repo root so the shared `packages/types` is available; push the latest commit and redeploy.
+4. Leave **Auto Sync** on (default): each push to the linked branch that changes `render.yaml` updates the services and triggers a deploy. No manual sync.
+5. Wait until API and frontend show **Live** (first build may take several minutes).
+
+**If the API build fails** with “datasource.url is required”: Render is using an old build command and sometimes an old commit. Do this **once**:
+
+1. **Render dashboard** → **ds-app-template-api** → **Settings** (or **Build & Deploy**).
+2. Set **Build Command** to: `npm run build:api`
+3. Set **Start Command** to: `npm run start:api`
+4. **Save**.
+5. **Manual Deploy** → **“Clear build cache & deploy”** (or **Deploy latest commit**) so it uses the **latest** commit on main, not an old one.
+
+The repo defines `build:api` (install + prisma generate only) and `start:api` (migrate + start) in the root `package.json`, so no manual command strings. After this one-time fix, future pushes will deploy with the correct commands.
 
 Done. Open the frontend URL. For future apps: clone this template repo, rename in `package.json` / `render.yaml` if you want, then same flow: push → Blueprint.
