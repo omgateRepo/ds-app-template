@@ -35,7 +35,14 @@ function request(path, options = {}) {
   return fetch(`${baseUrl}${path}`, { ...options, headers })
 }
 
+const API_URL_HELP =
+  'Set VITE_API_BASE_URL on the frontend service to your API URL (e.g. https://ds-app-template-api.onrender.com) and redeploy the frontend.'
+
 async function handleJsonResponse(res, errorMessage) {
+  const contentType = res.headers.get('content-type') || ''
+  if (contentType.includes('text/html')) {
+    throw new Error(`Got HTML instead of API response. ${API_URL_HELP}`)
+  }
   if (res.status === 401) throw new Error('Authentication required')
   if (!res.ok) {
     let details = {}

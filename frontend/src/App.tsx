@@ -61,6 +61,11 @@ export default function App() {
       <h1>App</h1>
       <p className="app-version">Version {APP_VERSION}</p>
       <p className="app-api">API: {API_BASE || '(same origin)'}</p>
+      {!API_BASE && typeof window !== 'undefined' && window.location?.hostname?.includes('onrender.com') && (
+        <p className="app-login-error">
+          API URL not set. Set VITE_API_BASE_URL on the frontend service to your API URL and redeploy.
+        </p>
+      )}
       {user ? (
         <div className="app-authenticated">
           <p>Hello, {user.displayName}</p>

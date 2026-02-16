@@ -33,4 +33,6 @@ git push -u origin main
 
 Everything stays in the Blueprint: `render.yaml` uses `npm run build:api` / `npm run start:api`, and the root `package.json` defines those scripts (build = install + prisma generate only; start = migrate + node). No dashboard overrides.
 
+**If you see "API URL not set" or "Got HTML instead of API response"** when logging in: the frontend was built without the API URL. In Render → **ds-app-template-frontend** → **Environment** → set **VITE_API_BASE_URL** to your API URL (e.g. `https://ds-app-template-api.onrender.com`). Save and trigger a **new deploy** so the frontend rebuilds (Vite bakes env vars at build time).
+
 Done. Open the frontend URL. For future apps: clone this template repo, rename in `package.json` / `render.yaml` if you want, then same flow: push → Blueprint.
