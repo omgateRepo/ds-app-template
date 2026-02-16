@@ -64,7 +64,7 @@ On push/PR to `main`:
 
 ## Deploy on Render
 
-Push to GitHub, then: **New + → Blueprint** → connect repo → **Apply**. The Blueprint creates the database, API, and frontend. No env vars to set. See [RENDER_CREATE.md](RENDER_CREATE.md).
+**Blueprint is the source of truth:** all Render config lives in `render.yaml`; no manual build/start overrides in the dashboard. Push to GitHub, then: **New + → Blueprint** → connect repo → **Apply**. The Blueprint creates the database, API, and frontend. No env vars to set. See [RENDER_CREATE.md](RENDER_CREATE.md).
 
 ## Git workflow
 

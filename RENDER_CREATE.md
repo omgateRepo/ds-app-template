@@ -1,6 +1,6 @@
 # Deploy this template on Render
 
-**Goal:** One Blueprint creates API + frontend + DB. No env vars to set (API allows all origins by default).
+**Blueprint is the source of truth:** everything (build/start commands, env, DB link) is in `render.yaml`; no manual overrides. One Blueprint creates API + frontend + DB. No env vars to set (API allows all origins by default).
 
 ---
 
