@@ -43,6 +43,8 @@ Monorepo template with **Frontend** (React + Vite + TypeScript), **Backend** (Ex
 
 4. **Auth:** The API uses HTTP Basic Auth. A default user **admin** / **Password1** is created on deploy (change after first login). Or set `RENDER_AUTH_USER` / `RENDER_AUTH_PASSWORD` in the backend env. The frontend can store credentials via `setAuthCredentials({ username, password })` and then call `fetchCurrentUser()`.
 
+When you push changes, bump `APP_VERSION` in [frontend/src/version.ts](frontend/src/version.ts) so you can confirm the new deploy is live (version is shown on the main page).
+
 ## Scripts (from repo root)
 
 | Script      | Description |

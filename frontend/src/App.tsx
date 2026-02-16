@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { API_BASE, clearAuthCredentials, fetchCurrentUser, getAuthCredentials, setAuthCredentials } from './api'
+import { APP_VERSION } from './version'
 
 export default function App() {
   const [user, setUser] = useState<{ displayName: string } | null>(null)
@@ -42,8 +43,8 @@ export default function App() {
     try {
       const me = await fetchCurrentUser()
       setUser(me)
-    } catch {
-      setLoginError('Invalid username or password')
+    } catch (err) {
+      setLoginError(err instanceof Error ? err.message : 'Login failed')
       setUser(null)
     }
   }
@@ -58,6 +59,7 @@ export default function App() {
   return (
     <div className="app">
       <h1>App</h1>
+      <p className="app-version">Version {APP_VERSION}</p>
       <p className="app-api">API: {API_BASE || '(same origin)'}</p>
       {user ? (
         <div className="app-authenticated">
