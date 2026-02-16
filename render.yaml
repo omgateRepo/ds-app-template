@@ -1,5 +1,5 @@
 # Render Blueprint – database first so fromDatabase resolves when services are created
-# Build: npm run build:api (install + prisma generate). Start: npm run start:api (migrate + node).
+# Build: build:api. preDeploy: migrate:api. Start: start:api.
 # Docs: https://render.com/docs/blueprint-spec
 
 databases:
